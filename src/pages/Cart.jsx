@@ -36,34 +36,34 @@ const Cart = () => {
                     {cartItems.map((item) => {
                         const { id, title, price, thumbnail, amount, stock } = item;
                         return (
-                            <article className="flex mb-5 justify-between w-full" key={id}>
-                                <div className="flex gap-2">
-                                    <div className=" h-[85px] sm:h-32 flex justify-center w-36 sm:w-52">
-                                        <img src={thumbnail} alt={title} className="h-full" />
-                                    </div>
-                                    <div className="pt-2 flex flex-col justify-evenly w-40">
+                            <article className="flex items-center flex-col sm:flex-row mb-10 gap-6 w-full " key={id}>
+                                <div className=" w-4/5 sm:h-32 flex justify-center sm:w-52">
+                                    <img src={thumbnail} alt={title} className="h-full" />
+                                </div>
+                                <div className="flex flex-auto w-full ">
+                                    <div className="pt-2 w-full leading-7">
                                         <h2>{title}</h2>
                                         <p>${price}</p>
-                                        <span>in stock: {stock}</span>
+                                        <p>in stock: {stock}</p>
                                         <button
                                             onClick={() => dispatch(removeItem(item))}
-                                            className="btn"
+                                            className="btn mt-5"
                                         >
                                             Remove
                                         </button>
                                     </div>
-                                </div>
-                                <div className="flex flex-col justify-center items-center">
-                                    <button
-                                        onClick={() => dispatch(increase(item))}
-                                        className="block"
-                                    >
-                                        <MdKeyboardArrowUp />
-                                    </button>
-                                    <span className="block">{amount}</span>
-                                    <button onClick={() => dispatch(decrease(item))}>
-                                        <MdKeyboardArrowDown />
-                                    </button>
+                                    <div className="flex flex-col justify-center items-center">
+                                        <button
+                                            onClick={() => dispatch(increase(item))}
+                                            className="block"
+                                        >
+                                            <MdKeyboardArrowUp />
+                                        </button>
+                                        <span className="block">{amount}</span>
+                                        <button onClick={() => dispatch(decrease(item))}>
+                                            <MdKeyboardArrowDown />
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
                         );
